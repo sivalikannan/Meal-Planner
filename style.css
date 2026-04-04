@@ -1,0 +1,433 @@
+/* =========================================
+   VARIABLES & GLOBAL RESET
+========================================= */
+:root {
+    --primary-color: #10b981;
+    --primary-hover: #059669;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   NAVBAR & HEADER
+========================================= */
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+    background: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url('https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=1600&auto=format&fit=crop') center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px;
+}
+
+.btn-block:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   PLANS SECTION
+========================================= */
+.plans-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.plan-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.plan-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.plan-name {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.plan-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.plan-desc {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+/* =========================================
+   MODAL & FORM
+========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 24, 39, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--white);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--danger);
+}
+
+.modal-content h2 {
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+#plan-display-name {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.form-group input, 
+.form-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--white);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+#form-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+#form-message.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+#form-message.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.hidden {
+    display: none;
+}
+
+/* =========================================
+   WEEKLY MENU SECTION
+========================================= */
+.bg-white {
+    background-color: var(--white);
+}
+
+.menu-section {
+    padding: 80px 0;
+}
+
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.menu-day-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.menu-day-title {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 5px;
+}
+
+.meal-item {
+    margin-bottom: 12px;
+    padding: 10px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.meal-type {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.meal-name {
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.veg-badge { color: #22c55e; }
+.non-veg-badge { color: #ef4444; }
+
+/* =========================================
+   RESPONSIVE QUERIES
+========================================= */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* simple fallback for mobile */
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .plan-card {
+        padding: 30px 20px;
+    }
+}

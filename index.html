@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealPlan - Monthly Meal Booking System</title>
+    <meta name="description" content="Book your monthly meal plans with ease. Veg, Non-Veg, and Diet plans available.">
+
+    <!-- Google Fonts integration for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to our stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" style="text-decoration: none;"><h1 class="logo">Meal<span>Plan</span></h1></a>
+            <ul class="nav-links">
+                <li><a href="#plans">Our Plans</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h2>Delicious, Healthy Meals Delivered to You</h2>
+            <p>Choose from our variety of monthly meal plans and enjoy stress-free dining every day.</p>
+            <a href="#plans" class="btn btn-primary">View Plans</a>
+        </div>
+    </header>
+
+    <!-- Weekly Menu Section -->
+    <section id="menu" class="menu-section bg-white">
+        <div class="container">
+            <h2 class="section-title">This Week's Menu</h2>
+
+            <div class="menu-filters">
+                <button class="filter-btn active" data-menu="combined">Combined Menu</button>
+                <button class="filter-btn" data-menu="veg">Veg Only</button>
+                <button class="filter-btn" data-menu="nonVeg">Non-Veg Only</button>
+            </div>
+
+            <div class="menu-grid" id="menu-container">
+                <!-- Weekly menu injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section (Dynamically populated by JS) -->
+    <section id="plans" class="plans-section">
+        <div class="container">
+            <h2 class="section-title">Our Subscription Plans</h2>
+            <div class="plans-grid" id="plans-container">
+                <!-- Plan Cards will be injected here by Javascript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal Form -->
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Book Your Plan</h2>
+            <p id="plan-display-name"></p>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="10-digit number" pattern="[0-9\+\-\s]+">
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="meal-pref">Meal Preference (Optional)</label>
+                    <select id="meal-pref" class="form-select">
+                        <option value="">Combined Veg & Non-veg</option>
+                        <option value="Veg">Vegetarian</option>
+                        <option value="Non-Veg">Non-Vegetarian</option>
+                    </select>
+                </div>
+
+                <!-- Hidden input to store selected plan natively in form data -->
+                <input type="hidden" id="selected-plan">
+
+                <button type="submit" class="btn btn-block" id="submit-btn">Confirm Booking</button>
+            </form>
+
+            <!-- Dynamic Success/Error Message Container -->
+            <div id="form-message" class="hidden"></div>
+        </div>
+    </div>
+
+    <!-- 
+      Firebase modular SDK and our App Logic. 
+      Use type="module" to allow ES6 imports 
+    -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
